@@ -1,5 +1,5 @@
 from rgbmatrix import graphics
-from utils import get_file
+from src.utils import get_file
 import json
 import debug
 import os.path

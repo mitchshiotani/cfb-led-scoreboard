@@ -1,4 +1,4 @@
-from utils import get_file, deep_update
+from src.utils import get_file, deep_update
 from layout import Layout
 from color import Color
 import json

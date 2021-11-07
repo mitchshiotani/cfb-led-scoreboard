@@ -1,11 +1,11 @@
 from datetime import datetime, timedelta
-from data.scoreboard_config import ScoreboardConfig
-from renderers.main import MainRenderer
+from src.data.scoreboard_config import ScoreboardConfig
+from src.renderers.main import MainRenderer
 # from renderers.offday import OffdayRenderer
 # from renderers.standings import StandingsRenderer
 from rgbmatrix import RGBMatrix, RGBMatrixOptions
-from utils import args, led_matrix_options
-from data.data import Data
+from src.utils import args, led_matrix_options
+from src.data.data import Data
 # import renderers.standings
 from api.cfb import Football_API_Wrapper as cfbgame
 import debug
