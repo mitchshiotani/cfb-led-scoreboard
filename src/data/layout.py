@@ -61,8 +61,6 @@ class Layout:
   def __find_at_keypath(self, keypath):
     keys = keypath.split('.')
     rv = self.json
-    print "rv:"
-    print rv
     for key in keys:
       rv = rv[key]
     return rv
@@ -71,7 +69,8 @@ class Layout:
     if font_name in self.font_cache:
       return self.font_cache[font_name]
 
-    font_paths = ["Assets", "matrix/fonts"]
+    # font_paths = ["Assets", "matrix/fonts"]
+    font_paths = ["Assets", "/home/pi/code/led-scoreboard/submodules/matrix/fonts"] # TODO: full path
     for font_path in font_paths:
       path = get_file("{}/{}.bdf".format(font_path, font_name))
       if os.path.isfile(path):

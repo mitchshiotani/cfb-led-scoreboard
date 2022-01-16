@@ -1,6 +1,7 @@
 from rgbmatrix import graphics
 from utils import get_font, get_file
 import json
+import pprint
 
 class TeamsRenderer:
   """Renders the scoreboard team banners including background color, team abbreviation text,
@@ -75,23 +76,25 @@ class TeamsRenderer:
     home_score_coords = self.data.config.layout.coords("teams.scores.home")
 
     # drawing/filling the boxes under team names
-    for team in ["away","home"]:
-      for x in range(bg_coords[team]["width"]):
-        for y in range(bg_coords[team]["height"]):
-          color = away_team_color if team == "away" else home_team_color
-          x_offset = bg_coords[team]["x"]
-          y_offset = bg_coords[team]["y"]
-          self.canvas.SetPixel(x + x_offset, y + y_offset, color['r'], color['g'], color['b'])
-    
+
+    # for team in ["away","home"]:
+    #   for x in range(bg_coords[team]["width"]):
+    #     for y in range(bg_coords[team]["height"]):
+    #       color = away_team_color if team == "away" else home_team_color
+    #       x_offset = bg_coords[team]["x"]
+    #       y_offset = bg_coords[team]["y"]
+    #       self.canvas.SetPixel(x + x_offset, y + y_offset, color['r'], color['g'], color['b'])
+
     # still dk what this is
-    for team in ["away","home"]:
-      for x in range(accent_coords[team]["width"]):
-        for y in range(accent_coords[team]["height"]):
-          # color = away_team_accent if team == "away" else home_team_accent
-          color = away_team_color if team == "away" else home_team_color # same as color for now
-          x_offset = accent_coords[team]["x"]
-          y_offset = accent_coords[team]["y"]
-          self.canvas.SetPixel(x + x_offset, y + y_offset, color['r'], color['g'], color['b'])
+
+    # for team in ["away","home"]:
+    #   for x in range(accent_coords[team]["width"]):
+    #     for y in range(accent_coords[team]["height"]):
+    #       # color = away_team_accent if team == "away" else home_team_accent
+    #       color = away_team_color if team == "away" else home_team_color # same as color for now
+    #       x_offset = accent_coords[team]["x"]
+    #       y_offset = accent_coords[team]["y"]
+    #       self.canvas.SetPixel(x + x_offset, y + y_offset, color['r'], color['g'], color['b'])
           
     # render text and score
     # self.__render_team_text(self.game.away, "away", away_colors, away_name_coords["x"], away_name_coords["y"])
@@ -109,12 +112,22 @@ class TeamsRenderer:
     # text_color = colors.get('text', self.default_colors['text'])
     text_color = color
     text_color_graphic = graphics.Color(text_color['r'], text_color['g'], text_color['b'])
+    # text_color_graphic = graphics.Color(255,255,255)
     font = self.data.config.layout.font("teams.name.{}".format(homeaway))
     team_text = '{:3s}'.format(team.team_name_abv.upper())
-    print "team:"
-    print team
     if self.data.config.full_team_names and self.canvas.width > 32:
       team_text = '{:13s}'.format(team.team_location)
+      print "team_text:"
+      print team_text
+    print "x:"
+    print x
+    print "y:"
+    print y
+    print "font:"
+    pp = pprint.PrettyPrinter(indent=4)
+    pp.pprint(font)
+    # pp.pprint(font["font"])
+    # font["font"] = self.layout.font("offday.time")
     graphics.DrawText(self.canvas, font["font"], x, y, text_color_graphic, team_text)
 
   # def __render_team_score(self, score, homeaway, colors, x, y):
@@ -124,7 +137,6 @@ class TeamsRenderer:
     text_color_graphic = graphics.Color(text_color['r'], text_color['g'], text_color['b'])
     coords = self.data.config.layout.coords("teams.scores.{}".format(homeaway))
     font = self.data.config.layout.font("teams.scores.{}".format(homeaway))
-    # TODO: have to change the config to reflect runs -> scores change above
     team_score = str(score)
     team_score_x = coords["x"] - (len(team_score) * font["size"]["width"])
     graphics.DrawText(self.canvas, font["font"], team_score_x, y, text_color_graphic, team_score)
