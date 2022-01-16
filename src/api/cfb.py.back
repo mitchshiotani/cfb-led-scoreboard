@@ -18,12 +18,13 @@ class FootballAPIWrapper:
         return match
     # not the most efficient way, but it'll work
 
-  # @staticmethod
-  def day(self):
+  @staticmethod
+  def day():
     """
     Get all the games occurring in the day 
     """
     matches_data = self.__generate_match_list(CFB_URL)
+    matches_data = __generate_match_list(CFB_URL)
     matches = []
     for match_data in matches_data:
       match = munch.munchify(match_data)

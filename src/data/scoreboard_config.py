@@ -138,10 +138,15 @@ class ScoreboardConfig:
     path = get_file(filename)
     if os.path.isfile(path):
       j = json.load(open(path))
+    # else:
+    #   print "path doesn't exist: {}".format(path)
+    #   exit()
     return j
 
   def __get_config(self, base_filename):
     filename = "{}.json".format(base_filename)
+    print "filename:"
+    print filename
     reference_filename = "{}.example".format(filename)
     reference_config = self.read_json(reference_filename)
     if not reference_filename:
@@ -151,7 +156,11 @@ class ScoreboardConfig:
     custom_config = self.read_json(filename)
     if custom_config:
       new_config = deep_update(reference_config, custom_config)
+      print "new_config:"
+      print new_config
       return new_config
+    print "reference_config:"
+    print reference_config
     return reference_config
 
   def __get_colors(self, base_filename):

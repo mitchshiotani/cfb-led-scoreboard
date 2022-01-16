@@ -7,7 +7,7 @@ from rgbmatrix import RGBMatrix, RGBMatrixOptions
 from src.utils import args, led_matrix_options
 from src.data.data import Data
 # import renderers.standings
-from api.cfb import Football_API_Wrapper as cfbgame
+from src.api.cfb import FootballAPIWrapper as cfbgame
 import debug
 
 SCRIPT_NAME = "CFB LED Scoreboard"
@@ -26,7 +26,7 @@ matrix = RGBMatrix(options = matrixOptions)
 debug.info("{} - v{} ({}x{})".format(SCRIPT_NAME, SCRIPT_VERSION, matrix.width, matrix.height))
 
 # Read scoreboard options from config.json if it exists
-config = ScoreboardConfig("config", matrix.width, matrix.height)
+config = ScoreboardConfig("/home/pi/code/led-scoreboard/config", matrix.width, matrix.height)
 debug.set_debug_status(config)
 
 # Create a new data object to manage the MLB data

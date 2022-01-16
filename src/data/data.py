@@ -1,7 +1,9 @@
-from api.cfb import FootballAPIWrapper as cfb
+from src.api.cfb import FootballAPIWrapper as cfb
 
 class Data:
   def __init__(self, config):
+    # cfb module
+    self.cfb = cfb()
     # Save the parsed config
     self.config = config
 
@@ -31,7 +33,7 @@ class Data:
     return counter
 
   def refresh_games(self):
-    all_games = cfb.day()
+    all_games = self.cfb.day()
     self.games = all_games
     
       

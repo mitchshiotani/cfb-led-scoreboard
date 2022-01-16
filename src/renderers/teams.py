@@ -44,8 +44,8 @@ class TeamsRenderer:
       
     # accents (?)
     # for now, just going to make it the same as the team colors
-    away_team_color = __convert_hex_to_rgb(self, self.game.away.team_color_prm)
-    home_team_color = __convert_hex_to_rgb(self, self.game.home.team_color_prm)
+    away_team_color = self.__convert_hex_to_rgb(self.game.away.team_color_prm)
+    home_team_color = self.__convert_hex_to_rgb(self.game.home.team_color_prm)
 
     # away_accents = self.__team_colors(self.away_team.abbrev)
     # try:
@@ -71,8 +71,8 @@ class TeamsRenderer:
     away_name_coords = self.data.config.layout.coords("teams.name.away")
     home_name_coords = self.data.config.layout.coords("teams.name.home")
 
-    away_score_coords = self.data.config.layout.coords("teams.runs.away")
-    home_score_coords = self.data.config.layout.coords("teams.runs.home")
+    away_score_coords = self.data.config.layout.coords("teams.scores.away")
+    home_score_coords = self.data.config.layout.coords("teams.scores.home")
 
     # drawing/filling the boxes under team names
     for team in ["away","home"]:
@@ -94,29 +94,40 @@ class TeamsRenderer:
           self.canvas.SetPixel(x + x_offset, y + y_offset, color['r'], color['g'], color['b'])
           
     # render text and score
-    self.__render_team_text(self.game.away, "away", away_colors, away_name_coords["x"], away_name_coords["y"])
-    self.__render_team_text(self.game.home, "home", home_colors, home_name_coords["x"], home_name_coords["y"])
-    self.__render_team_score(self.game.away.score, "away", away_colors, away_score_coords["x"], away_score_coords["y"])
-    self.__render_team_score(self.game.home.score, "home", home_colors, home_score_coords["x"], home_score_coords["y"])
+    # self.__render_team_text(self.game.away, "away", away_colors, away_name_coords["x"], away_name_coords["y"])
+    # self.__render_team_text(self.game.home, "home", home_colors, home_name_coords["x"], home_name_coords["y"])
+    # self.__render_team_score(self.game.away.score, "away", away_colors, away_score_coords["x"], away_score_coords["y"])
+    # self.__render_team_score(self.game.home.score, "home", home_colors, home_score_coords["x"], home_score_coords["y"])
 
-  def __render_team_text(self, team, homeaway, colors, x, y):
-    text_color = colors.get('text', self.default_colors['text'])
+    self.__render_team_text(self.game.away, "away", away_team_color, away_name_coords["x"], away_name_coords["y"])
+    self.__render_team_text(self.game.home, "home", home_team_color, home_name_coords["x"], home_name_coords["y"])
+    self.__render_team_score(self.game.away.team_score, "away", away_team_color, away_score_coords["x"], away_score_coords["y"])
+    self.__render_team_score(self.game.home.team_score, "home", home_team_color, home_score_coords["x"], home_score_coords["y"])
+
+  # def __render_team_text(self, team, homeaway, colors, x, y):
+  def __render_team_text(self, team, homeaway, color, x, y):
+    # text_color = colors.get('text', self.default_colors['text'])
+    text_color = color
     text_color_graphic = graphics.Color(text_color['r'], text_color['g'], text_color['b'])
     font = self.data.config.layout.font("teams.name.{}".format(homeaway))
     team_text = '{:3s}'.format(team.team_name_abv.upper())
+    print "team:"
+    print team
     if self.data.config.full_team_names and self.canvas.width > 32:
-      team_text = '{:13s}'.format(team.location)
+      team_text = '{:13s}'.format(team.team_location)
     graphics.DrawText(self.canvas, font["font"], x, y, text_color_graphic, team_text)
 
-  def __render_team_score(self, score, homeaway, colors, x, y):
-    text_color = colors.get('text', self.default_colors['text'])
+  # def __render_team_score(self, score, homeaway, colors, x, y):
+  def __render_team_score(self, score, homeaway, color, x, y):
+    # text_color = colors.get('text', self.default_colors['text'])
+    text_color = color
     text_color_graphic = graphics.Color(text_color['r'], text_color['g'], text_color['b'])
     coords = self.data.config.layout.coords("teams.scores.{}".format(homeaway))
     font = self.data.config.layout.font("teams.scores.{}".format(homeaway))
     # TODO: have to change the config to reflect runs -> scores change above
     team_score = str(score)
-    team_score_x = coords["x"] - (len(team_scores) * font["size"]["width"])
-    graphics.DrawText(self.canvas, font["font"], team_scores_x, y, text_color_graphic, team_runs)
+    team_score_x = coords["x"] - (len(team_score) * font["size"]["width"])
+    graphics.DrawText(self.canvas, font["font"], team_score_x, y, text_color_graphic, team_score)
 
   def __convert_hex_to_rgb(self, hex_str):
     # convert hex to rgb, to put into graphics.Color()

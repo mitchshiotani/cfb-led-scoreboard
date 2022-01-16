@@ -1,14 +1,14 @@
-from data.final import Final
-from data.pregame import Pregame
-from data.scoreboard import Scoreboard
-from data.status import Status
-from renderers.final import Final as FinalRenderer
-from renderers.pregame import Pregame as PregameRenderer
-from renderers.scoreboard import Scoreboard as ScoreboardRenderer
-from renderers.status import StatusRenderer
-from renderers.standings import StandingsRenderer
-from renderers.offday import OffdayRenderer
-from data.data import Data
+# from src.data.final import Final
+# from src.data.pregame import Pregame
+# from src.data.scoreboard import Scoreboard
+# from src.data.status import Status
+# from src.renderers.final import Final as FinalRenderer
+# from src.renderers.pregame import Pregame as PregameRenderer
+from src.renderers.scoreboard import Scoreboard as ScoreboardRenderer
+# from src.renderers.status import StatusRenderer
+# from src.renderers.standings import StandingsRenderer
+# from src.renderers.offday import OffdayRenderer
+# from src.data.data import Data
 import debug
 import time
 

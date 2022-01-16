@@ -1,4 +1,4 @@
-from renderers.teams import TeamsRenderer
+from src.renderers.teams import TeamsRenderer
 # have to replace above with the football equivalents
 
 class Scoreboard:

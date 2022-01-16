@@ -61,6 +61,8 @@ class Layout:
   def __find_at_keypath(self, keypath):
     keys = keypath.split('.')
     rv = self.json
+    print "rv:"
+    print rv
     for key in keys:
       rv = rv[key]
     return rv
