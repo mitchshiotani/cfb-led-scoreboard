@@ -29,8 +29,8 @@ debug.info("{} - v{} ({}x{})".format(SCRIPT_NAME, SCRIPT_VERSION, matrix.width, 
 config = ScoreboardConfig("/home/pi/code/led-scoreboard/config", matrix.width, matrix.height)
 debug.set_debug_status(config)
 
-# Create a new data object to manage the MLB data
-# This will fetch initial data from MLB
+# Create a new data object to manage the CFB data
+# This will fetch initial data from CFB
 data = Data(config)
 
 MainRenderer(matrix, data).render()
