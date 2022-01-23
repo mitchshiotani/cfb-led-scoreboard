@@ -17,6 +17,11 @@ class Data:
     # Fetch the games for today
     self.refresh_games()
 
+  def advance_to_next_game(self):
+    self.current_game_index = self.__next_game_index()
+    return self.current_game()
+ 
+
   def current_game(self):
     return self.games[self.current_game_index]
 

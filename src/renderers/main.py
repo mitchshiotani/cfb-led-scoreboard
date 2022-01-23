@@ -74,8 +74,8 @@ class MainRenderer:
       # if self.data.config.rotation_scroll_until_finished == False:
       #   self.scrolling_finished = True
 
-      # # Set the refresh rate
-      # refresh_rate = self.data.config.scrolling_speed
+      # Set the refresh rate
+      refresh_rate = self.data.config.scrolling_speed
 
       # # Currently the only thing that's always static is the live scoreboard
       # if Status.is_static(self.data.overview.status):
@@ -85,16 +85,19 @@ class MainRenderer:
       # if Status.is_irregular(self.data.overview.status) and Scoreboard(self.data.overview).get_text_for_reason() is None:
       #   self.scrolling_finished = True
 
-      # time.sleep(refresh_rate)
-      # endtime = time.time()
-      # time_delta = endtime - self.starttime
+      time.sleep(refresh_rate)
+      endtime = time.time()
+      time_delta = endtime - self.starttime
       # rotate_rate = self.__rotate_rate_for_status(self.data.overview.status)
+      rotate_rate = 5
+      self.scrolling_finished = True
 
-      # # If we're ready to rotate, let's do it
-      # if time_delta >= rotate_rate and self.scrolling_finished:
-      #   self.starttime = time.time()
-      #   self.scrolling_finished = False
-      #   self.data.needs_refresh = True
+      # If we're ready to rotate, let's do it
+      if time_delta >= rotate_rate and self.scrolling_finished:
+        self.starttime = time.time()
+        self.scrolling_finished = False
+        self.data.needs_refresh = True
+        game = self.data.advance_to_next_game()
 
       #   if Status.is_fresh(self.data.overview.status):
       #     self.scrolling_text_pos = self.canvas.width
