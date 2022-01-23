@@ -29,24 +29,14 @@ class TeamsRenderer:
 
   def render(self):
     # colors
-    away_team_color = self.game.away.team_color_prm
-    home_team_color = self.game.home.team_color_prm
-    # away_colors = self.__team_colors(self.away_team.abbrev)
-    # try:
-    #   away_team_color = away_colors['home']
-    # except KeyError as e:
-    #   away_team_color = self.__default_home_color()
-      
-    # home_colors = self.__team_colors(self.home_team.abbrev)
-    # try:
-    #   home_team_color = home_colors['home']
-    # except KeyError as e:
-    #   home_team_color = self.__default_home_color()
       
     # accents (?)
     # for now, just going to make it the same as the team colors
     away_team_color = self.__convert_hex_to_rgb(self.game.away.team_color_prm)
     home_team_color = self.__convert_hex_to_rgb(self.game.home.team_color_prm)
+
+    away_team_accent = self.__convert_hex_to_rgb(self.game.away.team_color_alt)
+    home_team_accent = self.__convert_hex_to_rgb(self.game.home.team_color_alt)
 
     # away_accents = self.__team_colors(self.away_team.abbrev)
     # try:
@@ -77,13 +67,14 @@ class TeamsRenderer:
 
     # drawing/filling the boxes under team names
 
-    # for team in ["away","home"]:
-    #   for x in range(bg_coords[team]["width"]):
-    #     for y in range(bg_coords[team]["height"]):
-    #       color = away_team_color if team == "away" else home_team_color
-    #       x_offset = bg_coords[team]["x"]
-    #       y_offset = bg_coords[team]["y"]
-    #       self.canvas.SetPixel(x + x_offset, y + y_offset, color['r'], color['g'], color['b'])
+    for team in ["away","home"]:
+      for x in range(bg_coords[team]["width"]):
+        for y in range(bg_coords[team]["height"]):
+          # color = away_team_accent if team == "away" else home_team_accent
+          color = away_team_color if team == "away" else home_team_color
+          x_offset = bg_coords[team]["x"]
+          y_offset = bg_coords[team]["y"]
+          self.canvas.SetPixel(x + x_offset, y + y_offset, color['r'], color['g'], color['b'])
 
     # still dk what this is
 
@@ -102,10 +93,15 @@ class TeamsRenderer:
     # self.__render_team_score(self.game.away.score, "away", away_colors, away_score_coords["x"], away_score_coords["y"])
     # self.__render_team_score(self.game.home.score, "home", home_colors, home_score_coords["x"], home_score_coords["y"])
 
-    self.__render_team_text(self.game.away, "away", away_team_color, away_name_coords["x"], away_name_coords["y"])
-    self.__render_team_text(self.game.home, "home", home_team_color, home_name_coords["x"], home_name_coords["y"])
-    self.__render_team_score(self.game.away.team_score, "away", away_team_color, away_score_coords["x"], away_score_coords["y"])
-    self.__render_team_score(self.game.home.team_score, "home", home_team_color, home_score_coords["x"], home_score_coords["y"])
+    # self.__render_team_text(self.game.away, "away", away_team_color, away_name_coords["x"], away_name_coords["y"])
+    # self.__render_team_text(self.game.home, "home", home_team_color, home_name_coords["x"], home_name_coords["y"])
+    # self.__render_team_score(self.game.away.team_score, "away", away_team_color, away_score_coords["x"], away_score_coords["y"])
+    # self.__render_team_score(self.game.home.team_score, "home", home_team_color, home_score_coords["x"], home_score_coords["y"])
+
+    self.__render_team_text(self.game.away, "away", away_team_accent, away_name_coords["x"], away_name_coords["y"])
+    self.__render_team_text(self.game.home, "home", home_team_accent, home_name_coords["x"], home_name_coords["y"])
+    self.__render_team_score(self.game.away.team_score, "away", away_team_accent, away_score_coords["x"], away_score_coords["y"])
+    self.__render_team_score(self.game.home.team_score, "home", home_team_accent, home_score_coords["x"], home_score_coords["y"])
 
   # def __render_team_text(self, team, homeaway, colors, x, y):
   def __render_team_text(self, team, homeaway, color, x, y):
