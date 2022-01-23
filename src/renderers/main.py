@@ -89,7 +89,7 @@ class MainRenderer:
       endtime = time.time()
       time_delta = endtime - self.starttime
       # rotate_rate = self.__rotate_rate_for_status(self.data.overview.status)
-      rotate_rate = 5
+      rotate_rate = 5 # TODO: need to make this a constant/ configurable
       self.scrolling_finished = True
 
       # If we're ready to rotate, let's do it
