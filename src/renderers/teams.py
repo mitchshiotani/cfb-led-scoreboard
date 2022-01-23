@@ -114,18 +114,21 @@ class TeamsRenderer:
     text_color_graphic = graphics.Color(text_color['r'], text_color['g'], text_color['b'])
     # text_color_graphic = graphics.Color(255,255,255)
     font = self.data.config.layout.font("teams.name.{}".format(homeaway))
-    team_text = '{:3s}'.format(team.team_name_abv.upper())
+    team_text = team.team_name_abv.upper()[:4]
+
     if self.data.config.full_team_names and self.canvas.width > 32:
-      team_text = '{:13s}'.format(team.team_location)
-      print "team_text:"
-      print team_text
-    print "x:"
-    print x
-    print "y:"
-    print y
-    print "font:"
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(font)
+      team_text = team.team_location[:11]
+      # team_text = '{:13s}'.format(team.team_location)
+
+      # print "team_text:"
+      # print team_text
+    # print "x:"
+    # print x
+    # print "y:"
+    # print y
+    # print "font:"
+    # pp = pprint.PrettyPrinter(indent=4)
+    # pp.pprint(font)
     # pp.pprint(font["font"])
     # font["font"] = self.layout.font("offday.time")
     graphics.DrawText(self.canvas, font["font"], x, y, text_color_graphic, team_text)
