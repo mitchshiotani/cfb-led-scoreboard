@@ -7,6 +7,9 @@ import munch
 # NFL_URL = 'http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard'
 CFB_URL = 'http://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard'
 
+# TODO: need to make more resilient against missing keys from api response. Happened with color on some occasions
+#       (probably setting default info in config)
+
 class FootballAPIWrapper:
   def overview(self, match_id):
     """
@@ -60,7 +63,11 @@ class FootballAPIWrapper:
       match_info[homeaway]['team_name_abv'] = event["competitions"][0]['competitors'][key]['team']['abbreviation']
       match_info[homeaway]['team_location'] = event["competitions"][0]['competitors'][key]['team']['location']
       #    color (primary and alternative)
-      match_info[homeaway]['team_color_prm'] = event["competitions"][0]['competitors'][key]['team']['color']
+      try:
+          match_info[homeaway]['team_color_prm'] = event["competitions"][0]['competitors'][key]['team']['color']
+      except KeyError:
+          match_info[homeaway]['team_color_prm'] = '000000'
+
       try:
           match_info[homeaway]['team_color_alt'] = event["competitions"][0]['competitors'][key]['team']['alternateColor']
       except KeyError:
