@@ -13,7 +13,7 @@ git checkout main
 git fetch origin --prune
 git pull
 sudo apt-get install libxml2-dev libxslt-dev
-sudo pip install pytz tzlocal "feedparser<6.0.0" pyowm
+sudo pipenv install --system # TODO: need to install pipenv beforehand, probably put that somewhere in this script
 make
 echo "If you didn't see any errors above, everything should be installed!"
 if [ -n "$1" ]; then
