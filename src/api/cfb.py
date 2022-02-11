@@ -85,6 +85,7 @@ class FootballAPIWrapper:
       return match_info
 
   # for 'STATUS_IN_PROGRESS' games, get live data
+  # for 'STATUS_SCHEDULED' games, get data as well
 
   def __get_live_data(self, match_info, event):
       """input: dictionary | output: dictionary updated if match is live"""
