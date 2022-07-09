@@ -50,6 +50,7 @@ class FootballAPIWrapper:
       match_info['start_time'] = event['date']
       match_info['match_id'] = event['id']
       match_info['time'] = event['status']['displayClock']
+      match_info['broadcast'] = ",".join(event['broadcasts']['names'])
       match_info['period'] = event['status']['period']
 
       # TODO: should probably put the status in an environment variable later

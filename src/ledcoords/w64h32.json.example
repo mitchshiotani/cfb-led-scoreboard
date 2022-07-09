@@ -229,8 +229,22 @@
       }
     }
   },
+  "pre_game_info": {
+    "gametime" : {
+        "x": 16,
+        "y": 22
+      },
+    "broadcast_info" : {
+        "x": 22,
+        "y": 30
+      }
+  },
   "time": {
     "x": 4,
+    "y": 22
+  },
+  "final": {
+    "x": 16,
     "y": 22
   },
   "downs": {
