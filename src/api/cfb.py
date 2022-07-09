@@ -4,8 +4,11 @@ import json
 from scrape_util import api_to_json
 import munch
 
-# NFL_URL = 'http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard'
+nfl_flg = 0
+NFL_URL = 'http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard'
 CFB_URL = 'http://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard'
+
+URL = NFL_URL if nfl_flg == 1 else CFB_URL
 
 # TODO: need to make more resilient against missing keys from api response. Happened with color on some occasions
 #       (probably setting default info in config)
@@ -26,7 +29,7 @@ class FootballAPIWrapper:
     """
     Get all the games occurring in the day 
     """
-    matches_data = self.__generate_match_list(CFB_URL)
+    matches_data = self.__generate_match_list(URL)
     matches = []
     for match_data in matches_data:
       match = munch.munchify(match_data)
