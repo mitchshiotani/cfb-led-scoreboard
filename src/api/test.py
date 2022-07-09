@@ -1,3 +1,7 @@
+# import sys
+
+# sys.path.append('/usr/local/lib/python3.9/site-packages')
+
 # from api.cfb import FootballAPIWrapper as cfb
 from cfb import FootballAPIWrapper as CFB
 import pprint
