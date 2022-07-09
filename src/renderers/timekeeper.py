@@ -1,6 +1,6 @@
 from rgbmatrix import graphics
 
-class TimeRenderer:
+class TimekeeperRenderer:
   """Renders the scoreboard team banners including background color, team abbreviation text,
   and their scored runs."""
 

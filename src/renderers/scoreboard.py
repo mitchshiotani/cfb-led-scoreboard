@@ -1,5 +1,5 @@
 from src.renderers.teams import TeamsRenderer
-from src.renderers.time import TimeRenderer
+from src.renderers.timekeeper import TimekeeperRenderer
 # have to replace above with the football equivalents
 
 class Scoreboard:
@@ -9,5 +9,5 @@ class Scoreboard:
 
   def render(self):
     TeamsRenderer(self.canvas, self.data).render()
-    TimeRenderer(self.canvas, self.data).render()
+    TimekeeperRenderer(self.canvas, self.data).render()
     # NetworkErrorRenderer(self.canvas, self.data).render()
