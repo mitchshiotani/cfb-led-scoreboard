@@ -231,7 +231,7 @@
   },
   "pre_game_info": {
     "gametime" : {
-        "x": 16,
+        "x": 12,
         "y": 22
       },
     "broadcast_info" : {

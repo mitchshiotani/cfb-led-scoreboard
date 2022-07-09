@@ -50,7 +50,10 @@ class FootballAPIWrapper:
       match_info['start_time'] = event['date']
       match_info['match_id'] = event['id']
       match_info['time'] = event['status']['displayClock']
-      match_info['broadcast'] = ",".join(event['broadcasts']['names'])
+      try:
+          match_info['broadcast'] = ",".join(event['competitions'][0]['broadcasts'][0]['names'])
+      except IndexError, KeyError:
+          match_info['broadcast'] = 'No Broadcast'
       match_info['period'] = event['status']['period']
 
       # TODO: should probably put the status in an environment variable later
@@ -71,7 +74,10 @@ class FootballAPIWrapper:
   def __get_team_data(self, match_info, event, num, key):
       homeaway = event["competitions"][0]['competitors'][key]['homeAway']
       match_info[homeaway] = {}
-      match_info[homeaway]['team_score'] = int(event["competitions"][0]['competitors'][key]['score'])
+      if match_info['status'] == 'STATUS_SCHEDULED': # TODO: probably should do this on the controller side, but this was the easiest to do for now
+          match_info[homeaway]['team_score'] = ''
+      else:
+          match_info[homeaway]['team_score'] = int(event["competitions"][0]['competitors'][key]['score'])
       #    name
       match_info[homeaway]['team_id'] = int(event["competitions"][0]['competitors'][key]['team']['id'])
       match_info[homeaway]['team_name'] = event["competitions"][0]['competitors'][key]['team']['displayName']
