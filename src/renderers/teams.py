@@ -38,6 +38,11 @@ class TeamsRenderer:
     away_team_accent = self.__convert_hex_to_rgb(self.game.away.team_color_alt)
     home_team_accent = self.__convert_hex_to_rgb(self.game.home.team_color_alt)
 
+    if self.game.home.team_color_prm == self.game.home.team_color_alt:
+      home_team_accent = {'r': 255, 'g': 255, 'b': 255}
+    if self.game.away.team_color_prm == self.game.away.team_color_alt:
+      away_team_accent = {'r': 255, 'g': 255, 'b': 255}
+
     # away_accents = self.__team_colors(self.away_team.abbrev)
     # try:
     #   away_team_accent = away_accents['accent']
