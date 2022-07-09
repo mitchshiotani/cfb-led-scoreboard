@@ -229,6 +229,18 @@
       }
     }
   },
+  "time": {
+    "x": 4,
+    "y": 17
+  },
+  "downs": {
+    "x": 4,
+    "y": 30
+  },
+  "field_position": {
+    "x": 4,
+    "y": 17
+  },
   "offday": {
     "scrolling_text": {
       "x": 0,

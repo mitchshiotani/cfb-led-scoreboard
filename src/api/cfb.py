@@ -51,6 +51,9 @@ class FootballAPIWrapper:
       match_info['match_id'] = event['id']
       match_info['time'] = event['status']['displayClock']
       match_info['period'] = event['status']['period']
+      match_info['time_and_period'] = event['status']['type']['shortDetail']
+      match_info['down_and_distance'] = event['situation']['shortDownDistanceText']
+      match_info['field_position'] = event['situation']['possessionText']
       match_info['display_period'] = self.__give_display_period(match_info['period'])
       match_info['detail'] = event['status']['type']['detail']
       match_info['match_type_id'] = event['status']['type']['id']
