@@ -33,9 +33,18 @@ class GameSituationRenderer:
     ######################################################
 
   def render(self):
+    self.__render_grey_square()
     self.__render_downs()
     self.__render_field_position()
 
+  def __render_grey_square(self):
+    # TODO: do this more properly, at least with config
+    color = RendererUtils().convert_hex_to_color_graphic('807c7c')
+    y = 23
+    for y_offset in range(12):
+      graphics.DrawLine(self.canvas, 0, y + y_offset, 64, y + y_offset, color)
+
+    return 1
   def __render_downs(self):
     down_px = []
     # TODO: add coords
