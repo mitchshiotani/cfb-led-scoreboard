@@ -61,50 +61,78 @@
       }
     }
   },
-  "outs": {
-    "1": {
-      "x": 15,
-      "y": 26,
-      "size": 2,
-      "nohit": {
+  "game_situation": {
+
+    "downs": {
+      "1": {
         "x": 15,
-        "y": 28,
-        "size": 2
+        "y": 26,
+        "size": 2,
+        "nohit": {
+          "x": 15,
+          "y": 28,
+          "size": 2
+        },
+        "perfect_game": {
+          "x": 15,
+          "y": 28,
+          "size": 2
+        }
       },
-      "perfect_game": {
-        "x": 15,
-        "y": 28,
-        "size": 2
+      "2": {
+        "x": 19,
+        "y": 26,
+        "size": 2,
+        "nohit": {
+          "x": 19,
+          "y": 28,
+          "size": 2
+        },
+        "perfect_game": {
+          "x": 19,
+          "y": 28,
+          "size": 2
+        }
+      },
+      "3": {
+        "x": 23,
+        "y": 26,
+        "size": 2,
+        "nohit": {
+          "x": 23,
+          "y": 28,
+          "size": 2
+        },
+        "perfect_game": {
+          "x": 23,
+          "y": 28,
+          "size": 2
+        }
       }
     },
-    "2": {
-      "x": 19,
-      "y": 26,
-      "size": 2,
-      "nohit": {
-        "x": 19,
-        "y": 28,
-        "size": 2
+    "field_position": {
+      "territory": {
+        "home" : {
+          "x": 8,
+          "y": 62
+          "width": 25
+          "height": 2
+        },
+        "away" : {
+          "x": 33,
+          "y": 62
+          "width": 25
+          "height": 2
+        }
       },
-      "perfect_game": {
-        "x": 19,
-        "y": 28,
-        "size": 2
-      }
-    },
-    "3": {
-      "x": 23,
-      "y": 26,
-      "size": 2,
-      "nohit": {
-        "x": 23,
-        "y": 28,
-        "size": 2
+      "position_stick": {
+        "x": 8,
+        "y": 61
+        "height": 5
       },
-      "perfect_game": {
-        "x": 23,
-        "y": 28,
-        "size": 2
+      "distance": {
+        "x": 8,
+        "y": 59
       }
     }
   },

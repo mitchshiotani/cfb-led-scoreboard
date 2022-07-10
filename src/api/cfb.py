@@ -57,14 +57,14 @@ class FootballAPIWrapper:
       match_info['period'] = event['status']['period']
 
       # TODO: should probably put the status in an environment variable later
-      if match_info['status'] == 'STATUS_IN_PROGRESS':
-        match_info['time_and_period'] = event['status']['type']['shortDetail']
-        match_info['down_and_distance'] = event['situation']['shortDownDistanceText']
-        match_info['field_position'] = event['situation']['possessionText']
-      else:
-        match_info['time_and_period'] = ''
-        match_info['down_and_distance'] = ''
-        match_info['field_position'] = ''
+      # if match_info['status'] == 'STATUS_IN_PROGRESS':
+      #   match_info['time_and_period'] = event['status']['type']['shortDetail']
+      #   match_info['down_and_distance'] = event['situation']['shortDownDistanceText']
+      #   match_info['field_position'] = event['situation']['possessionText']
+      # else:
+      #   match_info['time_and_period'] = ''
+      #   match_info['down_and_distance'] = ''
+      #   match_info['field_position'] = ''
 
       match_info['display_period'] = self.__give_display_period(match_info['period'])
       match_info['detail'] = event['status']['type']['detail']
@@ -110,11 +110,17 @@ class FootballAPIWrapper:
 
   def __get_live_data(self, match_info, event):
       """input: dictionary | output: dictionary updated if match is live"""
-      for stat in ['downDistanceText', 'shortDownDistanceText', 'possession', 'possessionText', 'isRedZone']:
+      for stat in ['down', 'distance', 'yardLine', 'downDistanceText', 'shortDownDistanceText', 'possession', 'possessionText', 'isRedZone']:
           try:
               match_info[stat] = event["competitions"][0]['situation'][stat]
           except KeyError:
-              pass
+              match_info[stat] = ''
+
+      if match_info['possession'] != '':
+        if match_info['home']['team_id'] == match_info['possession']:
+          match_info['possession_home_or_away'] = 'home'
+        elif match_info['away']['team_id'] == match_info['possession']:
+          match_info['possession_home_or_away'] = 'away'
       return match_info
 
 
