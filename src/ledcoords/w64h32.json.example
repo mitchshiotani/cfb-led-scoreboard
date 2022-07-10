@@ -61,50 +61,93 @@
       }
     }
   },
-  "outs": {
-    "1": {
-      "x": 15,
-      "y": 26,
-      "size": 2,
-      "nohit": {
-        "x": 15,
-        "y": 28,
-        "size": 2
+  "game_situation": {
+
+    "downs": {
+      "1": {
+        "x": 8,
+        "y": 16,
+        "size": 2,
+        "nohit": {
+          "x": 15,
+          "y": 28,
+          "size": 2
+        },
+        "perfect_game": {
+          "x": 15,
+          "y": 28,
+          "size": 2
+        }
       },
-      "perfect_game": {
-        "x": 15,
-        "y": 28,
-        "size": 2
+      "2": {
+        "x": 12,
+        "y": 16,
+        "size": 2,
+        "nohit": {
+          "x": 19,
+          "y": 28,
+          "size": 2
+        },
+        "perfect_game": {
+          "x": 19,
+          "y": 28,
+          "size": 2
+        }
+      },
+      "3": {
+        "x": 16,
+        "y": 16,
+        "size": 2,
+        "nohit": {
+          "x": 23,
+          "y": 28,
+          "size": 2
+        },
+        "perfect_game": {
+          "x": 23,
+          "y": 28,
+          "size": 2
+        }
+      },
+      "4": {
+        "x": 20,
+        "y": 16,
+        "size": 2,
+        "nohit": {
+          "x": 23,
+          "y": 28,
+          "size": 2
+        },
+        "perfect_game": {
+          "x": 23,
+          "y": 28,
+          "size": 2
+        }
       }
     },
-    "2": {
-      "x": 19,
-      "y": 26,
-      "size": 2,
-      "nohit": {
-        "x": 19,
-        "y": 28,
-        "size": 2
+    "field_position": {
+      "territory": {
+        "home" : {
+          "x": 8,
+          "y": 29,
+          "width": 25,
+          "height": 2
+        },
+        "away" : {
+          "x": 33,
+          "y": 29,
+          "width": 25,
+          "height": 2
+        }
       },
-      "perfect_game": {
-        "x": 19,
+      "position_stick": {
+        "x": 8,
         "y": 28,
-        "size": 2
-      }
-    },
-    "3": {
-      "x": 23,
-      "y": 26,
-      "size": 2,
-      "nohit": {
-        "x": 23,
-        "y": 28,
-        "size": 2
+        "height": 5
       },
-      "perfect_game": {
-        "x": 23,
-        "y": 28,
-        "size": 2
+      "distance": {
+        "x": 8,
+        "y": 26 
       }
     }
   },
@@ -240,8 +283,8 @@
       }
   },
   "time": {
-    "x": 4,
-    "y": 22
+    "x": 32,
+    "y": 21
   },
   "final": {
     "x": 22,
