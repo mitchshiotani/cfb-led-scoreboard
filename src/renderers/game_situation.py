@@ -38,8 +38,7 @@ class GameSituationRenderer:
     # colors.append(self.data.config.colors.graphics_color("game_situation.downs.3"))
     # colors.append(self.data.config.colors.graphics_color("game_situation.downs.4"))
 
-    color         = RendererUtils().convert_hex_to_rgb(self.game.home.team_color_prm)
-    color_graphic = graphics.Color(color['r'], color['g'], color['b'])
+    color_graphic = RendererUtils().convert_hex_to_color_graphic(self.game.home.team_color_prm)
     colors.append(color_graphic)
     colors.append(color_graphic)
     colors.append(color_graphic)
@@ -76,8 +75,8 @@ class GameSituationRenderer:
     coords['home']['x']
     coords['away']['y']
     colors = {
-                'home': RendererUtils().convert_hex_to_rgb(self.game.home.team_color_prm),
-                'away': RendererUtils().convert_hex_to_rgb(self.game.away.team_color_prm)
+                'home': RendererUtils().convert_hex_to_color_graphic(self.game.home.team_color_prm),
+                'away': RendererUtils().convert_hex_to_color_graphic(self.game.away.team_color_prm)
              }
 
     for homeaway in ['home', 'away']:
@@ -98,8 +97,8 @@ class GameSituationRenderer:
     y      = coords['y']
     height = coords['height']
     colors = {
-                'home': RendererUtils().convert_hex_to_rgb(self.game.home.team_color_prm),
-                'away': RendererUtils().convert_hex_to_rgb(self.game.away.team_color_prm)
+                'home': RendererUtils().convert_hex_to_color_graphic(self.game.home.team_color_prm),
+                'away': RendererUtils().convert_hex_to_color_graphic(self.game.away.team_color_prm)
              }
     color  = colors[self.game.possession_home_or_away]
 
