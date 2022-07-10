@@ -108,26 +108,41 @@
           "y": 28,
           "size": 2
         }
+      },
+      "4": {
+        "x": 27,
+        "y": 26,
+        "size": 2,
+        "nohit": {
+          "x": 23,
+          "y": 28,
+          "size": 2
+        },
+        "perfect_game": {
+          "x": 23,
+          "y": 28,
+          "size": 2
+        }
       }
     },
     "field_position": {
       "territory": {
         "home" : {
           "x": 8,
-          "y": 62
-          "width": 25
+          "y": 62,
+          "width": 25,
           "height": 2
         },
         "away" : {
           "x": 33,
-          "y": 62
-          "width": 25
+          "y": 62,
+          "width": 25,
           "height": 2
         }
       },
       "position_stick": {
         "x": 8,
-        "y": 61
+        "y": 61,
         "height": 5
       },
       "distance": {

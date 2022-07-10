@@ -33,10 +33,17 @@ class GameSituationRenderer:
 
     colors = []
     # TODO: add colors (or honestly just use whatever)
-    colors.append(self.data.config.colors.graphics_color("game_situation.downs.1"))
-    colors.append(self.data.config.colors.graphics_color("game_situation.downs.2"))
-    colors.append(self.data.config.colors.graphics_color("game_situation.downs.3"))
-    colors.append(self.data.config.colors.graphics_color("game_situation.downs.4"))
+    # colors.append(self.data.config.colors.graphics_color("game_situation.downs.1"))
+    # colors.append(self.data.config.colors.graphics_color("game_situation.downs.2"))
+    # colors.append(self.data.config.colors.graphics_color("game_situation.downs.3"))
+    # colors.append(self.data.config.colors.graphics_color("game_situation.downs.4"))
+
+    color         = RendererUtils().convert_hex_to_rgb(self.game.home.team_color_prm)
+    color_graphic = graphics.Color(color['r'], color['g'], color['b'])
+    colors.append(color_graphic)
+    colors.append(color_graphic)
+    colors.append(color_graphic)
+    colors.append(color_graphic)
     
     for down in range(len(down_px)):
       self.__render_down_square(down_px[down], colors[down])
