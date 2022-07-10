@@ -1,5 +1,5 @@
 from rgbmatrix import graphics
-from src.renderers.utils import RendererUtils
+from src.renderers.renderer_utils import RendererUtils
 import math
 
 class GameSituationRenderer:
