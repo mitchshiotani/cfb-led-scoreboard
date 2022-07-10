@@ -3,6 +3,7 @@ import urllib3.request
 import json
 from scrape_util import api_to_json
 import munch
+from color_convert import adjust_colors
 
 nfl_flg = 0
 NFL_URL = 'http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard'
@@ -93,6 +94,12 @@ class FootballAPIWrapper:
           match_info[homeaway]['team_color_alt'] = event["competitions"][0]['competitors'][key]['team']['alternateColor']
       except KeyError:
           match_info[homeaway]['team_color_alt'] = 'ffffff'
+
+      #    adjust colors
+      adjusted_cs = adjust_colors(match_info[homeaway]['team_color_prm'], match_info[homeaway]['team_color_alt'])
+      match_info[homeaway]['team_color_prm'] = adjusted_cs[0]
+      match_info[homeaway]['team_color_alt'] = adjusted_cs[1]
+    
       # more exceptions
       try:
           match_info[homeaway]['team_score_qtrs'] = [int(score['value']) for score in event["competitions"][0]['competitors'][key]['linescores']]
