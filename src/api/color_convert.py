@@ -56,7 +56,7 @@ def brighten_text(primary_hsv, alternative_hsv):
 
     # keep unchanged if alt is bright enough
     if alternative_hsv[2] >= 225 * 0.85:
-        print("color unchanged!")
+        # print("color unchanged!")
         return [primary_hsv, alternative_hsv]
 
     alternative_hsv[1] = 0.01
@@ -75,17 +75,15 @@ def adjust_colors(primary_hex, alternative_hex):
     primary_value = primary_hsv[2]
     # if primary color is dark, brighten alt color
     if primary_value < 225 * 0.85:
-        # print("dark background; making text brighter")
         adj_cs = brighten_text(primary_hsv, alternative_hsv)
-        # print([hsv_to_hex(adj_cs[0]), hsv_to_hex(adj_cs[1])])
-        return [hsv_to_hex(adj_cs[0]), hsv_to_hex(adj_cs[1])]
+        # return [hsv_to_hex(adj_cs[0]), hsv_to_hex(adj_cs[1])]
+        return ["#{}".format(primary_hex), hsv_to_hex(adj_cs[1])]
 
     # elif primary color is bright, darken alt color
     elif primary_value > 225 * 0.95:
-        # print("bright background; making text darker")
         adj_cs = darken_text(primary_hsv, alternative_hsv)
-        # print([hsv_to_hex(adj_cs[0]), hsv_to_hex(adj_cs[1])])
-        return [hsv_to_hex(adj_cs[0]), hsv_to_hex(adj_cs[1])]
+        # return [hsv_to_hex(adj_cs[0]), hsv_to_hex(adj_cs[1])]
+        return ["#{}".format(primary_hex), hsv_to_hex(adj_cs[1])]
 
     # if no changes, return original values
     return [primary_hex, alternative_hex]

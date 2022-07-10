@@ -97,9 +97,11 @@ class FootballAPIWrapper:
 
       #    adjust colors
       adjusted_cs = adjust_colors(match_info[homeaway]['team_color_prm'], match_info[homeaway]['team_color_alt'])
-      match_info[homeaway]['team_color_prm'] = adjusted_cs[0]
-      match_info[homeaway]['team_color_alt'] = adjusted_cs[1]
-    
+
+      # TODO: doing the [1:] below to get rid of the #, but should properly do this later
+      match_info[homeaway]['team_color_prm'] = adjusted_cs[0][1:]
+      match_info[homeaway]['team_color_alt'] = adjusted_cs[1][1:]
+
       # more exceptions
       try:
           match_info[homeaway]['team_score_qtrs'] = [int(score['value']) for score in event["competitions"][0]['competitors'][key]['linescores']]
