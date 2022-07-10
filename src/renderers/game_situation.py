@@ -1,6 +1,11 @@
 from rgbmatrix import graphics
 from src.renderers.renderer_utils import RendererUtils
 import math
+import random
+
+NOTICE_COLOR_HEX = 'f2d31f'
+WARN_COLOR_HEX   = 'ed0e37'
+GOOD_COLOR_HEX   = '26f50f'
 
 class GameSituationRenderer:
 
@@ -13,8 +18,16 @@ class GameSituationRenderer:
     self.color_graphics = graphics.Color(self.default_colors['r'], self.default_colors['g'], self.default_colors['b'])
 
     ### TODO: going to change data here for testing purposes ###
+    # down_list = ['1','2','3','4']
+    # distance_list = ['5','8','12','20']
+    # yard_line_list = ['30','10','60','90']
+    # home_away_list = ['home','away']
+    # self.game.down      = random.choice(down_list)
+    # self.game.distance  = random.choice(distance_list)
+    # self.game.yardLine  = random.choice(yard_line_list)
+    # self.game.possession_home_or_away = random.choice(home_away_list)
     self.game.down = '2'
-    self.game.distance = '20'
+    self.game.distance = '8'
     self.game.yardLine = '32'
     self.game.possession_home_or_away = 'away'
     ######################################################
@@ -38,16 +51,18 @@ class GameSituationRenderer:
     # colors.append(self.data.config.colors.graphics_color("game_situation.downs.3"))
     # colors.append(self.data.config.colors.graphics_color("game_situation.downs.4"))
 
-    color_graphic = RendererUtils().convert_hex_to_color_graphic(self.game.home.team_color_prm)
+    # color_graphic = RendererUtils().convert_hex_to_color_graphic(self.game.home.team_color_prm)
+    color_graphic = RendererUtils().convert_hex_to_color_graphic(NOTICE_COLOR_HEX)
+ 
     colors.append(color_graphic)
     colors.append(color_graphic)
     colors.append(color_graphic)
     colors.append(color_graphic)
-    
+
     for down in range(len(down_px)):
       self.__render_down_square(down_px[down], colors[down])
       # Fill in the circle if that out has occurred
-      if (self.game.down > down):
+      if (int(self.game.down) > down):
         self.__fill_down_square(down_px[down], colors[down])
 
   def __render_down_square(self, down, color):
@@ -89,7 +104,7 @@ class GameSituationRenderer:
   def __render_position_stick(self):
     territory_coords    = self.data.config.layout.coords("game_situation.field_position.territory")
     yard_to_pixel_ratio = math.ceil( 100 / ( territory_coords['home']['width'] + territory_coords['away']['width'] ) )
-    x_offset            = math.ceil( self.game.yardLine / yard_to_pixel_ratio )
+    x_offset            = math.ceil( int(self.game.yardLine) / yard_to_pixel_ratio )
     # TODO: should change camel case to snake case for yardLine (and other keys), over at cfb.py
 
     coords = self.data.config.layout.coords("game_situation.field_position.position_stick")
@@ -108,19 +123,26 @@ class GameSituationRenderer:
     # TODO: being used in multiple functions, so best to evaluation beforehand
     territory_coords    = self.data.config.layout.coords("game_situation.field_position.territory")
     yard_to_pixel_ratio = math.ceil( 100 / ( territory_coords['home']['width'] + territory_coords['away']['width'] ) )
-    x_offset            = math.ceil( self.game.yardLine / yard_to_pixel_ratio )
+    x_offset            = math.ceil( int(self.game.yardLine) / yard_to_pixel_ratio )
     ######
-    distance = self.game.distance
+
+    distance = math.ceil( int(self.game.distance) / yard_to_pixel_ratio )
     if self.game.possession_home_or_away == 'away':
       distance *= -1
 
-    coords = self.data.config.layout.coords("game_situation.field_position.position_stick")
+    if int(self.game.distance) <= 10:
+      distance_color_hex = NOTICE_COLOR_HEX
+      if int(self.game.distance) <= 5:
+        distance_color_hex = GOOD_COLOR_HEX
+    else:
+      distance_color_hex = WARN_COLOR_HEX
+
+    color = RendererUtils().convert_hex_to_color_graphic(distance_color_hex)
+
+
+    coords = self.data.config.layout.coords("game_situation.field_position.distance")
     x      = coords['x']
     y      = coords['y']
-    colors = {
-                'home': RendererUtils().convert_hex_to_rgb(self.game.home.team_color_prm),
-                'away': RendererUtils().convert_hex_to_rgb(self.game.away.team_color_prm)
-             }
-    color  = colors[self.game.possession_home_or_away]
+
 
     graphics.DrawLine(self.canvas, x + x_offset, y, x + x_offset + distance, y, color)
