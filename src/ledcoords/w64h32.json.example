@@ -237,13 +237,37 @@
         "y": 7
       }
     },
-    "name": {
+    "ranking": {
       "away": {
         "x": 4,
         "y": 6
       },
       "home": {
         "x": 4,
+        "y": 13
+      },
+      "background": {
+        "away": {
+          "width": 10,
+          "height": 7,
+          "x": 0,
+          "y": 0
+        },
+        "home": {
+          "width": 10,
+          "height": 7,
+          "x": 0,
+          "y": 7
+        }
+      }
+    },
+    "name": {
+      "away": {
+        "x": 14,
+        "y": 6
+      },
+      "home": {
+        "x": 14,
         "y": 13
       }
     },
