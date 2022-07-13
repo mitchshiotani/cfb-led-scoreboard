@@ -3,9 +3,10 @@ from src.renderers.renderer_utils import RendererUtils
 import math
 import random
 
-NOTICE_COLOR_HEX = 'f2d31f'
-WARN_COLOR_HEX   = 'ed0e37'
-GOOD_COLOR_HEX   = '26f50f'
+NOTICE_COLOR_HEX       = 'fc7f03'
+WARN_COLOR_HEX         = 'ed0e37'
+GOOD_COLOR_HEX         = '26f50f'
+ALMOST_THERE_COLOR_HEX = '05c3fc'
 
 class GameSituationRenderer:
 
@@ -27,7 +28,7 @@ class GameSituationRenderer:
     # self.game.yardLine  = random.choice(yard_line_list)
     # self.game.possession_home_or_away = random.choice(home_away_list)
     self.game.down = '2'
-    self.game.distance = '8'
+    self.game.distance = '4'
     self.game.yardLine = '32'
     self.game.possession_home_or_away = 'away'
     ######################################################
@@ -115,8 +116,10 @@ class GameSituationRenderer:
     y      = coords['y']
     height = coords['height']
     colors = {
-                'home': RendererUtils().convert_hex_to_color_graphic(self.game.home.team_color_prm),
-                'away': RendererUtils().convert_hex_to_color_graphic(self.game.away.team_color_prm)
+                # 'home': RendererUtils().convert_hex_to_color_graphic(self.game.home.team_color_prm),
+                # 'away': RendererUtils().convert_hex_to_color_graphic(self.game.away.team_color_prm)
+                'home': RendererUtils().convert_hex_to_color_graphic(NOTICE_COLOR_HEX),
+                'away': RendererUtils().convert_hex_to_color_graphic(NOTICE_COLOR_HEX)
              }
     color  = colors[self.game.possession_home_or_away]
 
@@ -134,9 +137,9 @@ class GameSituationRenderer:
       distance *= -1
 
     if int(self.game.distance) <= 10:
-      distance_color_hex = NOTICE_COLOR_HEX
+      distance_color_hex = GOOD_COLOR_HEX
       if int(self.game.distance) <= 5:
-        distance_color_hex = GOOD_COLOR_HEX
+        distance_color_hex = ALMOST_THERE_COLOR_HEX
     else:
       distance_color_hex = WARN_COLOR_HEX
 
