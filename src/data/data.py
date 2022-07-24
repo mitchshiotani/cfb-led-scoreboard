@@ -35,6 +35,7 @@ class Data:
     games = self.cfb.day()
     if self.config.is_my_team_mode:
       # using lambda because making it a function would've been painful with getting team names and preferred teams and such
-      filtered_games = filter(lambda x: x.home.team_name in self.config.preferred_teams or x.away.team_name in self.config.preferred_teams, games)
+      print(games[0].home.team_name)
+      filtered_games = filter(lambda x: x.home.team_location in self.config.preferred_teams or x.away.team_location in self.config.preferred_teams, games)
       games = list(filtered_games)
     self.games = games

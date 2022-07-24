@@ -3,7 +3,7 @@
 		"my_team_mode": true
 	},
 	"preferred": {
-		"teams": ["Stanford", "Hawaii"]
+		"teams": ["Hawai'i", "Stanford"]
 	},
 	"news_ticker": {
 		"team_offday": true,

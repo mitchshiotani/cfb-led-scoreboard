@@ -19,7 +19,8 @@ class ScoreboardConfig:
     json = self.__get_config(filename_base)
 
     # Preferred Teams/Divisions
-    self.preferred_teams = json["preferred"]["teams"]
+    self.preferred_teams     = json["preferred"]["teams"]
+    self.preferred_divisions = json["preferred"]["divisions"]
     self.is_my_team_mode = json["scoreboard"]["my_team_mode"]
 
     # News Ticker
