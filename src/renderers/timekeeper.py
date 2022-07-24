@@ -1,4 +1,9 @@
 from rgbmatrix import graphics
+from src.renderers.renderer_utils import RendererUtils
+
+# TODO: set as constant read from config files
+GOOD_COLOR_HEX = '26f50f'
+DEFAULT_COLOR_HEX = 'ffffff'
 
 class TimekeeperRenderer:
 
@@ -27,5 +32,17 @@ class TimekeeperRenderer:
     text = "{} P{}".format(self.game.time, self.game.period)
     text = "2:34 P4"
     padded_text = text.zfill(8)
-    graphics.DrawText(self.canvas, font['font'], coords['x'], coords['y'], self.color_graphics, padded_text)
+
+    color = RendererUtils().convert_hex_to_color_graphic(DEFAULT_COLOR_HEX)
+
+    if self.__is_good_game():
+        color = RendererUtils().convert_hex_to_color_graphic(GOOD_COLOR_HEX)
+
+    graphics.DrawText(self.canvas, font['font'], coords['x'], coords['y'], color, padded_text)
     return 1
+
+  # TODO: this probably shouldn't be here, but oh well
+  def __is_good_game(self):
+    if self.game.period >= 3 and abs(self.game.away.team_score - self.game.home.team_score) <= 7:
+        return True
+    return False

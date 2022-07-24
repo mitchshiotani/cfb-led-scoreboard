@@ -3,6 +3,7 @@ from src.renderers.renderer_utils import RendererUtils
 import math
 import random
 
+# TODO: set as constant read from config files
 NOTICE_COLOR_HEX       = 'fc7f03'
 WARN_COLOR_HEX         = 'ed0e37'
 GOOD_COLOR_HEX         = '26f50f'
