@@ -43,6 +43,6 @@ class TimekeeperRenderer:
 
   # TODO: this probably shouldn't be here, but oh well
   def __is_good_game(self):
-    if self.game.period == 4 and abs(self.game.away.team_score - self.game.home.team_score) <= 7:
+    if self.game.period >= 3 and abs(self.game.away.team_score - self.game.home.team_score) <= 7:
         return True
     return False
