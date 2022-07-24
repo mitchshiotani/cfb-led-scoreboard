@@ -1,7 +1,9 @@
 {
+	"scoreboard": {
+		"my_team_mode": true
+	},
 	"preferred": {
-		"teams": ["Cubs"],
-		"divisions": ["NL Central"]
+		"teams": ["Hawai'i", "Stanford"]
 	},
 	"news_ticker": {
 		"team_offday": true,
