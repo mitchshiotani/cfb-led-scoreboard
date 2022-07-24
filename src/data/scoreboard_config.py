@@ -11,7 +11,7 @@ DEFAULT_SCROLLING_SPEED = 2
 DEFAULT_ROTATE_RATE = 15.0
 MINIMUM_ROTATE_RATE = 2.0
 DEFAULT_ROTATE_RATES = {"live": DEFAULT_ROTATE_RATE, "final": DEFAULT_ROTATE_RATE, "pregame": DEFAULT_ROTATE_RATE}
-DEFAULT_PREFERRED_TEAMS = ["Cubs"]
+DEFAULT_PREFERRED_TEAMS = ["Stanford", "Hawaii"]
 DEFAULT_PREFERRED_DIVISIONS = ["NL Central"]
 
 class ScoreboardConfig:
@@ -20,7 +20,7 @@ class ScoreboardConfig:
 
     # Preferred Teams/Divisions
     self.preferred_teams = json["preferred"]["teams"]
-    self.preferred_divisions = json["preferred"]["divisions"]
+    self.is_my_team_mode = json["scoreboard"]["my_team_mode"]
 
     # News Ticker
     self.news_ticker_team_offday = json["news_ticker"]["team_offday"]

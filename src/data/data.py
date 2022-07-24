@@ -25,12 +25,6 @@ class Data:
   def current_game(self):
     return self.games[self.current_game_index]
 
-  def game_index_for_preferred_team(self):
-    if self.config.preferred_teams:
-      return self.__game_index_for(self.config.preferred_teams[0])
-    else:
-      return 0
-
   def __next_game_index(self):
     counter = self.current_game_index + 1
     if counter >= len(self.games):
@@ -38,8 +32,9 @@ class Data:
     return counter
 
   def refresh_games(self):
-    all_games = self.cfb.day()
-    self.games = all_games
-    
-      
-
+    games = self.cfb.day()
+    if self.config.is_my_team_mode:
+      # using lambda because making it a function would've been painful with getting team names and preferred teams and such
+      filtered_games = filter(lambda x: x.home.team_name in self.config.preferred_teams or x.away.team_name in self.config.preferred_teams, games)
+      games = list(filtered_games)
+    self.games = games
