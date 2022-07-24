@@ -17,9 +17,9 @@ class Scoreboard:
       TimekeeperRenderer(self.canvas, self.data).render()
       GameSituationRenderer(self.canvas, self.data).render()
     if self.game.status == 'STATUS_SCHEDULED':
-      # PregameInfoRenderer(self.canvas, self.data).render()
-      TimekeeperRenderer(self.canvas, self.data).render()
-      GameSituationRenderer(self.canvas, self.data).render()
+      PregameInfoRenderer(self.canvas, self.data).render()
+      # TimekeeperRenderer(self.canvas, self.data).render()
+      # GameSituationRenderer(self.canvas, self.data).render()
     if self.game.status == 'STATUS_FINAL':
       FinalInfoRenderer(self.canvas, self.data).render()
     # NetworkErrorRenderer(self.canvas, self.data).render()
