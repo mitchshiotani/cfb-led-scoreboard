@@ -5,6 +5,9 @@
 	"preferred": {
 		"teams": ["Hawai'i", "Stanford"]
 	},
+	"time_difference": {
+		"utc_difference": 9
+	},
 	"news_ticker": {
 		"team_offday": true,
 		"always_display": false,
