@@ -16,7 +16,7 @@ class PregameInfoRenderer:
     self.__render_broadcast_info()
 
   def __render_gametime(self):
-    start_time_changed = datetime.strptime(self.game.start_time, '%Y-%m-%dT%H:%MZ') + timedelta(hours=self.data.config.time_difference.utc_difference)
+    start_time_changed = datetime.strptime(self.game.start_time, '%Y-%m-%dT%H:%MZ') + timedelta(hours=self.data.config.utc_difference)
     start_time_text = start_time_changed.strftime("%m/%d %H:%M")
     # start_time_text = datetime.strptime(self.game.start_time, '%Y-%m-%dT%H:%MZ').strftime("%m/%d %H:%M")
     # TODO: need to make this show in local time, but I'll have to figure out how to do that
