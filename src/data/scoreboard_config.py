@@ -18,6 +18,9 @@ class ScoreboardConfig:
   def __init__(self, filename_base, width, height):
     json = self.__get_config(filename_base)
 
+    # Time Difference
+    self.utc_difference = json["time_difference"]["utc_difference"]
+
     # Preferred Teams/Divisions
     self.preferred_teams     = json["preferred"]["teams"]
     self.preferred_divisions = json["preferred"]["divisions"]
