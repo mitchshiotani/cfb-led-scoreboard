@@ -8,6 +8,9 @@
 	"time_difference": {
 		"utc_difference": 9
 	},
+	"results_limit": {
+		"game_limit": 20
+	},
 	"news_ticker": {
 		"team_offday": true,
 		"always_display": false,

@@ -21,6 +21,9 @@ class ScoreboardConfig:
     # Time Difference
     self.utc_difference = json["time_difference"]["utc_difference"]
 
+    # Game Number Limit
+    self.game_limit = json["results_limit"]["game_limit"]
+
     # Preferred Teams/Divisions
     self.preferred_teams     = json["preferred"]["teams"]
     self.preferred_divisions = json["preferred"]["divisions"]

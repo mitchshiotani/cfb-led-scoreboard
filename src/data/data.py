@@ -38,4 +38,7 @@ class Data:
       print(games[0].home.team_name)
       filtered_games = filter(lambda x: x.home.team_location in self.config.preferred_teams or x.away.team_location in self.config.preferred_teams, games)
       games = list(filtered_games)
+    if self.config.game_limit < len(games):
+      # shorten game array to game_limit number
+      games = games[:self.config.game_limit]
     self.games = games
