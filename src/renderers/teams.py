@@ -50,22 +50,21 @@ class TeamsRenderer:
           y_offset = bg_coords[team]["y"]
           self.canvas.SetPixel(x + x_offset, y + y_offset, color['r'], color['g'], color['b'])
 
-    self.game.away.team_ranking = '11'
-    if self.game.away.team_ranking:
+    # XXX: this should really be done in cfb.py, to make team_ranking null if it's 99 in the ESPN API
+    if self.game.away.team_ranking and self.game.away.team_ranking != 99:
         self.__render_team_ranking(self.game.away, "away", away_team_color, away_team_accent, away_ranking_coords["x"], away_ranking_coords["y"])
 
-    self.game.home.team_ranking = ''
-    if self.game.home.team_ranking:
+    # XXX: this should really be done in cfb.py, to make team_ranking null if it's 99 in the ESPN API
+    if self.game.home.team_ranking and self.game.home.team_ranking != 99:
         self.__render_team_ranking(self.game.home, "home", home_team_color, home_team_accent, home_ranking_coords["x"], home_ranking_coords["y"])
 
     self.__render_team_text(self.game.away, "away", away_team_accent, away_name_coords["x"], away_name_coords["y"])
     self.__render_team_text(self.game.home, "home", home_team_accent, home_name_coords["x"], home_name_coords["y"])
-    self.game.away.team_score = 99
-    self.game.home.team_score = 99
-    self.__render_team_score(self.game.away.team_score, "away", away_team_accent, away_score_coords["x"], away_score_coords["y"])
-    self.__render_team_score(self.game.home.team_score, "home", home_team_accent, home_score_coords["x"], home_score_coords["y"])
-    self.game.possession_home_or_away = 'away'
-    self.__render_possession()
+
+    if self.game.status == 'STATUS_IN_PROGRESS':
+        self.__render_team_score(self.game.away.team_score, "away", away_team_accent, away_score_coords["x"], away_score_coords["y"])
+        self.__render_team_score(self.game.home.team_score, "home", home_team_accent, home_score_coords["x"], home_score_coords["y"])
+        self.__render_possession()
 
   def __render_team_ranking(self, team, homeaway, color, accent, ranking_x, ranking_y):
     team_bg_coords = self.data.config.layout.coords("teams.ranking.background.{}".format(homeaway))
@@ -82,7 +81,7 @@ class TeamsRenderer:
     text_color_graphic = graphics.Color(text_color['r'], text_color['g'], text_color['b'])
     # text_color_graphic = graphics.Color(255,255,255)
     font = self.data.config.layout.font("teams.ranking.{}".format(homeaway))
-    ranking = team.team_ranking
+    ranking = str(team.team_ranking)
 
     # graphics.DrawText(self.canvas, font["font"], x, y, text_color_graphic, ranking)
     graphics.DrawText(self.canvas, font["font"], ranking_x, ranking_y, text_color_graphic, ranking)
