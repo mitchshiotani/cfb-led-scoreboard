@@ -54,7 +54,7 @@ class FootballAPIWrapper:
       try:
           match_info['broadcast'] = ",".join(event['competitions'][0]['broadcasts'][0]['names'])
       except IndexError, KeyError:
-          match_info['broadcast'] = 'No Broadcast'
+          match_info['broadcast'] = 'N/A'
       match_info['period'] = event['status']['period']
 
       # TODO: should probably put the status in an environment variable later
