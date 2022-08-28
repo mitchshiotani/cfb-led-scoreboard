@@ -76,11 +76,10 @@ class GameSituationRenderer:
     coords = self.data.config.layout.coords("game_situation.field_position.territory")
     coords['home']['x']
     coords['away']['y']
+    color = WARN_COLOR_HEX if self.game.isRedZone == 'true' else NOTICE_COLOR_HEX
     colors = {
-                # 'home': RendererUtils().convert_hex_to_color_graphic(self.game.home.team_color_prm),
-                # 'away': RendererUtils().convert_hex_to_color_graphic(self.game.away.team_color_prm)
-                'home': RendererUtils().convert_hex_to_color_graphic(NOTICE_COLOR_HEX),
-                'away': RendererUtils().convert_hex_to_color_graphic(NOTICE_COLOR_HEX)
+                'home': RendererUtils().convert_hex_to_color_graphic(color),
+                'away': RendererUtils().convert_hex_to_color_graphic(color)
              }
 
     for homeaway in ['home', 'away']:
