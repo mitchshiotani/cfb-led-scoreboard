@@ -110,7 +110,9 @@ class TeamsRenderer:
 
   def __render_possession(self):
     # find out who has possession
+    print(self.game)
     homeaway = self.game.possession_home_or_away
+    if homeaway == '': return
     coords = self.data.config.layout.coords("teams.possession.{}".format(homeaway))
     team_w_possession = getattr(self.game, homeaway)
     color = RendererUtils().convert_hex_to_color_graphic(team_w_possession.team_color_alt)

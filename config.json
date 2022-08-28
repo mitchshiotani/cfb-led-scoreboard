@@ -1,6 +1,6 @@
 {
 	"scoreboard": {
-		"my_team_mode": true
+		"my_team_mode": false
 	},
 	"preferred": {
 		"teams": ["Hawai'i", "Stanford"]

@@ -80,7 +80,7 @@ class FootballAPIWrapper:
       else:
           match_info[homeaway]['team_score'] = int(event["competitions"][0]['competitors'][key]['score'])
       #    name
-      match_info[homeaway]['team_id'] = int(event["competitions"][0]['competitors'][key]['team']['id'])
+      match_info[homeaway]['team_id'] = event["competitions"][0]['competitors'][key]['team']['id']
       match_info[homeaway]['team_name'] = event["competitions"][0]['competitors'][key]['team']['displayName']
       match_info[homeaway]['team_name_abv'] = event["competitions"][0]['competitors'][key]['team']['abbreviation']
       match_info[homeaway]['team_location'] = event["competitions"][0]['competitors'][key]['team']['location']
@@ -125,7 +125,9 @@ class FootballAPIWrapper:
           except KeyError:
               match_info[stat] = ''
 
-      if match_info['possession'] != '':
+      if match_info['possession'] == '':
+        match_info['possession_home_or_away'] = ''
+      else:
         if match_info['home']['team_id'] == match_info['possession']:
           match_info['possession_home_or_away'] = 'home'
         elif match_info['away']['team_id'] == match_info['possession']:

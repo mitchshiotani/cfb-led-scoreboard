@@ -15,12 +15,6 @@ class TimekeeperRenderer:
     self.default_colors = {'r': 255, 'g': 255, 'b': 255} # just setting to white for now, used for text
     self.color_graphics = graphics.Color(self.default_colors['r'], self.default_colors['g'], self.default_colors['b'])
 
-    ### TODO: going to change data here for testing purposes ###
-    self.game.shortDetail = '1:23 - 4th'
-    self.game.down_and_distance = '2nd & 20'
-    self.game.field_position = 'PIT 32'
-    ######################################################
-
   def render(self):
     self.__render_game_time_text()
 

@@ -19,21 +19,6 @@ class GameSituationRenderer:
     self.default_colors = {'r': 255, 'g': 255, 'b': 255} # just setting to white for now, used for text
     self.color_graphics = graphics.Color(self.default_colors['r'], self.default_colors['g'], self.default_colors['b'])
 
-    ### TODO: going to change data here for testing purposes ###
-    # down_list = ['1','2','3','4']
-    # distance_list = ['5','8','12','20']
-    # yard_line_list = ['30','10','60','90']
-    # home_away_list = ['home','away']
-    # self.game.down      = random.choice(down_list)
-    # self.game.distance  = random.choice(distance_list)
-    # self.game.yardLine  = random.choice(yard_line_list)
-    # self.game.possession_home_or_away = random.choice(home_away_list)
-    self.game.down = '2'
-    self.game.distance = '4'
-    self.game.yardLine = '32'
-    self.game.possession_home_or_away = 'away'
-    ######################################################
-
   def render(self):
     self.__render_downs()
     self.__render_field_position()
@@ -54,7 +39,6 @@ class GameSituationRenderer:
     # colors.append(self.data.config.colors.graphics_color("game_situation.downs.3"))
     # colors.append(self.data.config.colors.graphics_color("game_situation.downs.4"))
 
-    # color_graphic = RendererUtils().convert_hex_to_color_graphic(self.game.home.team_color_prm)
     color_graphic = RendererUtils().convert_hex_to_color_graphic(NOTICE_COLOR_HEX)
  
     colors.append(color_graphic)
@@ -122,7 +106,8 @@ class GameSituationRenderer:
                 'home': RendererUtils().convert_hex_to_color_graphic(NOTICE_COLOR_HEX),
                 'away': RendererUtils().convert_hex_to_color_graphic(NOTICE_COLOR_HEX)
              }
-    color  = colors[self.game.possession_home_or_away]
+    # color  = colors[self.game.possession_home_or_away]
+    color = RendererUtils().convert_hex_to_color_graphic(NOTICE_COLOR_HEX)
 
     graphics.DrawLine(self.canvas, x + x_offset, y, x + x_offset, y - height, color)
 
