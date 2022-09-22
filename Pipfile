@@ -5,8 +5,12 @@ name = "pypi"
 
 [packages]
 munch = "*"
-
-[dev-packages]
+pytz = "*"
+tzlocal = "*"
+feedparser = "<6.0.0"
+pyowm = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "2.7"
+
+[dev-packages]
