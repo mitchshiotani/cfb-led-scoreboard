@@ -22,9 +22,10 @@ class ScoreboardConfig:
     self.utc_difference = json["time_difference"]["utc_difference"]
 
     # Preferred Teams/Divisions
-    self.preferred_teams     = json["preferred"]["teams"]
-    self.preferred_divisions = json["preferred"]["divisions"]
-    self.is_my_team_mode = json["scoreboard"]["my_team_mode"]
+    self.preferred_teams         = json["preferred"]["teams"]
+    self.preferred_divisions     = json["preferred"]["divisions"]
+    self.is_my_team_mode         = json["scoreboard"]["my_team_mode"]
+    self.is_good_games_only_mode = json["scoreboard"]["good_games_only_mode"]
 
     # News Ticker
     self.news_ticker_team_offday = json["news_ticker"]["team_offday"]

@@ -29,14 +29,14 @@ class TimekeeperRenderer:
 
     color = RendererUtils().convert_hex_to_color_graphic(DEFAULT_COLOR_HEX)
 
-    if self.__is_good_game():
+    if __is_good_game(self.game):
         color = RendererUtils().convert_hex_to_color_graphic(GOOD_COLOR_HEX)
 
     graphics.DrawText(self.canvas, font['font'], coords['x'], coords['y'], color, padded_text)
     return 1
 
-  # TODO: this probably shouldn't be here, but oh well
-  def __is_good_game(self):
-    if self.game.period >= 3 and abs(self.game.away.team_score - self.game.home.team_score) <= 7:
-        return True
-    return False
+# TODO: this probably shouldn't be here, but oh well
+def __is_good_game(game):
+  if game.period >= 3 and abs(game.away.team_score - game.home.team_score) <= 7:
+      return True
+  return False
