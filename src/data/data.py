@@ -28,6 +28,7 @@ class Data:
   def __next_game_index(self):
     counter = self.current_game_index + 1
     if counter >= len(self.games):
+      self.refresh_games()
       counter = 0
     return counter
 
