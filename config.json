@@ -1,6 +1,7 @@
 {
 	"scoreboard": {
-		"my_team_mode": false
+		"my_team_mode": false,
+		"good_games_only_mode": false
 	},
 	"preferred": {
 		"teams": ["Hawai'i", "Stanford"]
