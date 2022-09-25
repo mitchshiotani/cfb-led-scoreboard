@@ -1,5 +1,8 @@
 # cfb-led-scoreboard
 
+![img1](./img/img1.jpg)
+![img2](./img/img2.jpg)
+
 LED scoreboard for college football.
 
 ## Setup
