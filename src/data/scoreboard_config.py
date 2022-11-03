@@ -1,6 +1,6 @@
 from src.utils import get_file, deep_update
-from layout import Layout
-from color import Color
+from src.data.layout import Layout
+from src.data.color import Color
 import json
 import os
 import sys

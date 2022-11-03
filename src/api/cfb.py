@@ -1,9 +1,9 @@
 # import urllib.request
 import urllib3.request
 import json
-from scrape_util import api_to_json
+from src.api.scrape_util import api_to_json
 import munch
-from color_convert import adjust_colors
+from src.api.color_convert import adjust_colors
 
 nfl_flg = 0
 NFL_URL = 'http://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard'
@@ -53,7 +53,7 @@ class FootballAPIWrapper:
       match_info['time'] = event['status']['displayClock']
       try:
           match_info['broadcast'] = ",".join(event['competitions'][0]['broadcasts'][0]['names'])
-      except IndexError, KeyError:
+      except ( IndexError, KeyError ):
           match_info['broadcast'] = 'N/A'
       match_info['period'] = event['status']['period']
 
