@@ -88,7 +88,7 @@ if __name__ == "__main__":
     url = 'http://site.api.espn.com/apis/site/v2/sports/football/college-football/scoreboard'
     master_list = generate_match_list(url)
     # print(master_list[0])
-    print(master_list)
+    # print(master_list)
 
 
 

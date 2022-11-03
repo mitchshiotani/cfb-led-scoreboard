@@ -84,6 +84,7 @@ class TeamsRenderer:
     ranking = str(team.team_ranking)
 
     # graphics.DrawText(self.canvas, font["font"], x, y, text_color_graphic, ranking)
+    # print(f"ranking: {ranking}")
     graphics.DrawText(self.canvas, font["font"], ranking_x, ranking_y, text_color_graphic, ranking)
 
   def __render_team_text(self, team, homeaway, color, x, y):
@@ -110,7 +111,7 @@ class TeamsRenderer:
 
   def __render_possession(self):
     # find out who has possession
-    print(self.game)
+    # print(self.game)
     homeaway = self.game.possession_home_or_away
     if homeaway == '': return
     coords = self.data.config.layout.coords("teams.possession.{}".format(homeaway))
