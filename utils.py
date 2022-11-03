@@ -1,4 +1,4 @@
-from rgbmatrix import RGBMatrixOptions, graphics
+from src.infra.rgb_matrix_wrapper import RGBMatrixOptions, graphics
 import collections
 import argparse
 import os

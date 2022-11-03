@@ -1,9 +1,7 @@
 from datetime import datetime, timedelta
 from src.data.scoreboard_config import ScoreboardConfig
 from src.renderers.main import MainRenderer
-# from renderers.offday import OffdayRenderer
-# from renderers.standings import StandingsRenderer
-from rgbmatrix import RGBMatrix, RGBMatrixOptions
+from src.infra.rgb_matrix_wrapper import RGBMatrix, RGBMatrixOptions
 from src.utils import args, led_matrix_options
 from src.data.data import Data
 # import renderers.standings

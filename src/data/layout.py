@@ -1,4 +1,4 @@
-from rgbmatrix import graphics
+from src.infra.rgb_matrix_wrapper import graphics
 from src.utils import get_file
 import json
 import debug

@@ -1,4 +1,4 @@
-from rgbmatrix import graphics
+from src.infra.rgb_matrix_wrapper import graphics
 
 class RendererUtils:
   def convert_hex_to_color_graphic(self, hex_str):

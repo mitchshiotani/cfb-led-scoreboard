@@ -1,4 +1,4 @@
-from rgbmatrix import graphics
+from src.infra.rgb_matrix_wrapper import graphics
 
 class FinalInfoRenderer:
   def __init__(self, canvas, data):
