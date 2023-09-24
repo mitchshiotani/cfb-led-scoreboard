@@ -1,4 +1,4 @@
-from rgbmatrix import graphics
+from src.infra.rgb_matrix_wrapper import graphics
 from src.renderers.renderer_utils import RendererUtils
 
 # TODO: set as constant read from config files

@@ -4,13 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+# setuptools = "<58.0"
 munch = "*"
 pytz = "*"
 tzlocal = "*"
-feedparser = "<6.0.0"
+# feedparser = "<6.0.0"
 pyowm = "*"
+webcolors = "*"
+urllib3 = "*"
+# pycopy-colorsys = "*"
 
 [requires]
-python_version = "2.7"
+python_version = "3.8"
 
 [dev-packages]

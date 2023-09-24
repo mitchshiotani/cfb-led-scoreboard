@@ -1,5 +1,5 @@
 from utils import get_file
-from rgbmatrix import graphics
+from src.infra.rgb_matrix_wrapper import graphics
 import json
 import debug
 import os.path

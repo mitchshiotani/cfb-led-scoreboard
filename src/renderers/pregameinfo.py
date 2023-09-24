@@ -1,5 +1,5 @@
 from time import time
-from rgbmatrix import graphics
+from src.infra.rgb_matrix_wrapper import graphics
 from datetime import datetime, timedelta
 
 class PregameInfoRenderer:
