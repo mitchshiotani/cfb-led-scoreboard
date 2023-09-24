@@ -7,6 +7,7 @@ from src.data.data import Data
 # import renderers.standings
 from src.api.cfb import FootballAPIWrapper as cfbgame
 import debug
+import os
 
 SCRIPT_NAME = "CFB LED Scoreboard"
 SCRIPT_VERSION = "4.0.1"
@@ -24,7 +25,8 @@ matrix = RGBMatrix(options = matrixOptions)
 debug.info("{} - v{} ({}x{})".format(SCRIPT_NAME, SCRIPT_VERSION, matrix.width, matrix.height))
 
 # Read scoreboard options from config.json if it exists
-config = ScoreboardConfig("/home/pi/code/led-scoreboard/config", matrix.width, matrix.height)
+script_dir = os.path.dirname(os.path.abspath(__file__))
+config = ScoreboardConfig(f'{script_dir}/config', matrix.width, matrix.height)
 debug.set_debug_status(config)
 
 # Create a new data object to manage the CFB data
