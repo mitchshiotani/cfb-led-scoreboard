@@ -1,5 +1,3 @@
-# import urllib.request
-import urllib3.request
 import json
 from src.api.scrape_util import api_to_json
 import munch
